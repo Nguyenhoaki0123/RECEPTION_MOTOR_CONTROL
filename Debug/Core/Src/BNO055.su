@@ -1,0 +1,17 @@
+../Core/Src/BNO055.c:74:6:BNO055_Reset	32	static
+../Core/Src/BNO055.c:79:6:Check_Status	40	static
+../Core/Src/BNO055.c:152:6:SelectPage	32	static
+../Core/Src/BNO055.c:167:6:ResetBNO055	32	static
+../Core/Src/BNO055.c:201:6:ReadData	56	static
+../Core/Src/BNO055.c:318:6:Set_Operation_Mode	32	static
+../Core/Src/BNO055.c:342:6:SetPowerMODE	32	static
+../Core/Src/BNO055.c:365:6:Clock_Source	32	static
+../Core/Src/BNO055.c:378:6:BNO055_Axis	32	static
+../Core/Src/BNO055.c:400:6:SET_Accel_Range	32	static
+../Core/Src/BNO055.c:415:6:BNO055_Init	40	static
+../Core/Src/BNO055.c:479:6:getCalibration	40	static
+../Core/Src/BNO055.c:520:6:getSensorOffsets	40	static
+../Core/Src/BNO055.c:546:6:setSensorOffsets	40	static
+../Core/Src/BNO055.c:570:6:isFullyCalibrated	16	static
+../Core/Src/BNO055.c:605:12:getCurrentMode	32	static
+../Core/Src/BNO055.c:622:6:Calibrate_BNO055	24	static

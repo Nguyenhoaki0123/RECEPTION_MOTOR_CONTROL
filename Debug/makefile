@@ -52,6 +52,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 CANOpenNode-STM32F407-Disco.list \
 
+OBJCOPY_HEX += \
+CANOpenNode-STM32F407-Disco.hex \
+
 
 # All Target
 all: main-build
@@ -75,12 +78,17 @@ CANOpenNode-STM32F407-Disco.list: $(EXECUTABLES) makefile objects.list $(OPTIONA
 	@echo 'Finished building: $@'
 	@echo ' '
 
+CANOpenNode-STM32F407-Disco.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "CANOpenNode-STM32F407-Disco.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) CANOpenNode-STM32F407-Disco.elf CANOpenNode-STM32F407-Disco.list CANOpenNode-STM32F407-Disco.map default.size.stdout
+	-$(RM) CANOpenNode-STM32F407-Disco.elf CANOpenNode-STM32F407-Disco.hex CANOpenNode-STM32F407-Disco.list CANOpenNode-STM32F407-Disco.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

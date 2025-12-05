@@ -394,6 +394,9 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
     /* USER CODE END TIM14_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_TIM14_CLK_ENABLE();
+    /* TIM14 interrupt Init */
+    HAL_NVIC_SetPriority(TIM8_TRG_COM_TIM14_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM8_TRG_COM_TIM14_IRQn);
     /* USER CODE BEGIN TIM14_MspInit 1 */
 
     /* USER CODE END TIM14_MspInit 1 */
@@ -430,6 +433,8 @@ void HAL_TIM_OnePulse_MspInit(TIM_HandleTypeDef* htim_onepulse)
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     /* TIM8 interrupt Init */
+    HAL_NVIC_SetPriority(TIM8_TRG_COM_TIM14_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM8_TRG_COM_TIM14_IRQn);
     HAL_NVIC_SetPriority(TIM8_CC_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TIM8_CC_IRQn);
     /* USER CODE BEGIN TIM8_MspInit 1 */
@@ -472,6 +477,16 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
     /* USER CODE END TIM14_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_TIM14_CLK_DISABLE();
+
+    /* TIM14 interrupt DeInit */
+    /* USER CODE BEGIN TIM14:TIM8_TRG_COM_TIM14_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM8_TRG_COM_TIM14_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM8_TRG_COM_TIM14_IRQn); */
+    /* USER CODE END TIM14:TIM8_TRG_COM_TIM14_IRQn disable */
+
     /* USER CODE BEGIN TIM14_MspDeInit 1 */
 
     /* USER CODE END TIM14_MspDeInit 1 */
@@ -501,6 +516,14 @@ void HAL_TIM_OnePulse_MspDeInit(TIM_HandleTypeDef* htim_onepulse)
     HAL_GPIO_DeInit(GPIOC, GPIO_PIN_6);
 
     /* TIM8 interrupt DeInit */
+    /* USER CODE BEGIN TIM8:TIM8_TRG_COM_TIM14_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM8_TRG_COM_TIM14_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM8_TRG_COM_TIM14_IRQn); */
+    /* USER CODE END TIM8:TIM8_TRG_COM_TIM14_IRQn disable */
+
     HAL_NVIC_DisableIRQ(TIM8_CC_IRQn);
     /* USER CODE BEGIN TIM8_MspDeInit 1 */
 
